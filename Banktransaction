@@ -1,0 +1,43 @@
+public class Bank {
+    // Instance variable to store account balance
+    private double amount;
+
+    // Parameterized constructor to initialize amount
+    public Bank(double amount) {
+        this.amount = amount;
+    }
+
+    // Method to withdraw money using ternary operator
+    public void withdraw(double withdrawalAmount) {
+        String message = (withdrawalAmount <= amount) 
+            ? "Withdrawal successful" 
+            : "Insufficient balance";
+
+        System.out.println(message);
+
+        // Update amount only if withdrawal is successful
+        amount = (withdrawalAmount <= amount) 
+            ? amount - withdrawalAmount 
+            : amount;
+    }
+
+    // Method to deposit money
+    public void deposit(double depositAmount) {
+        amount += depositAmount;
+        System.out.println("Deposit successful");
+    }
+
+    // Method to display current balance
+    public void displayBalance() {
+        System.out.println("Total balance: ₹" + amount);
+    }
+
+    // Main method to test the Bank class
+    public static void main(String[] args) {
+        Bank myAccount = new Bank(10000); // Initialize with ₹10,000
+
+        myAccount.withdraw(3000);         // Try withdrawing ₹3,000
+        myAccount.deposit(5000);          // Deposit ₹5,000
+        myAccount.displayBalance();       // Display final balance
+    }
+}
